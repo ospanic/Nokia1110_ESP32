@@ -263,7 +263,7 @@ void st7789_write_frame(const uint16_t xs, const uint16_t ys, const uint16_t wid
     while (READ_PERI_REG(SPI_CMD_REG(SPI_NUM))&SPI_USR);
 }
 
-void st7789_write_frame2(const uint16_t xs, const uint16_t ys, const uint16_t width, const uint16_t height, const uint8_t * data){
+void st7789_draw_pic(const uint16_t xs, const uint16_t ys, const uint16_t width, const uint16_t height, const uint8_t * data){
     int x, y;
     int i;
     uint16_t x1, y1;

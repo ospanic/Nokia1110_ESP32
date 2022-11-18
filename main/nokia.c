@@ -132,7 +132,7 @@ static void example_timer_init(int timer_idx, bool auto_reload)
 
 //下列函数在spi_lcd.c中
 extern void st7789_init(void);
-extern void st7789_write_frame2(const uint16_t xs, const uint16_t ys, const uint16_t width, const uint16_t height, const uint8_t data[]);
+extern void st7789_draw_pic(const uint16_t xs, const uint16_t ys, const uint16_t width, const uint16_t height, const uint8_t data[]);
 extern void st7789_clear(const uint16_t color);
 
 //按键初始化，该函数在psxcontroller.c中
@@ -146,21 +146,21 @@ void game_icon_dis(int icon_num, int normal)
 {
     if(normal == 0)//显示未选中图标
     {
-        if(icon_num == 1) st7789_write_frame2(68,30,64,64,(const uint8_t *)nokia_game1_start);
-        else if(icon_num == 2) st7789_write_frame2(138,30,64,64,(const uint8_t *)nokia_game2_start);
-        else if(icon_num == 3) st7789_write_frame2(208,30,64,64,(const uint8_t *)nokia_game3_start);
-        else if(icon_num == 4) st7789_write_frame2(68,105,64,64,(const uint8_t *)nokia_game4_start);
-        else if(icon_num == 5) st7789_write_frame2(138,105,64,64,(const uint8_t *)nokia_game5_start);
-        else if(icon_num == 6) st7789_write_frame2(208,105,64,64,(const uint8_t *)nokia_game6_start);
+        if(icon_num == 1) st7789_draw_pic(68,30,64,64,(const uint8_t *)nokia_game1_start);
+        else if(icon_num == 2) st7789_draw_pic(138,30,64,64,(const uint8_t *)nokia_game2_start);
+        else if(icon_num == 3) st7789_draw_pic(208,30,64,64,(const uint8_t *)nokia_game3_start);
+        else if(icon_num == 4) st7789_draw_pic(68,105,64,64,(const uint8_t *)nokia_game4_start);
+        else if(icon_num == 5) st7789_draw_pic(138,105,64,64,(const uint8_t *)nokia_game5_start);
+        else if(icon_num == 6) st7789_draw_pic(208,105,64,64,(const uint8_t *)nokia_game6_start);
     }
     else if(normal == 1)//显示选中图标
     {
-        if(icon_num == 1) st7789_write_frame2(68,30,64,64,(const uint8_t *)nokia_game1s_start);
-        else if(icon_num == 2) st7789_write_frame2(138,30,64,64,(const uint8_t *)nokia_game2s_start);
-        else if(icon_num == 3) st7789_write_frame2(208,30,64,64,(const uint8_t *)nokia_game3s_start);
-        else if(icon_num == 4) st7789_write_frame2(68,105,64,64,(const uint8_t *)nokia_game4s_start);
-        else if(icon_num == 5) st7789_write_frame2(138,105,64,64,(const uint8_t *)nokia_game5s_start);
-        else if(icon_num == 6) st7789_write_frame2(208,105,64,64,(const uint8_t *)nokia_game6s_start);
+        if(icon_num == 1) st7789_draw_pic(68,30,64,64,(const uint8_t *)nokia_game1s_start);
+        else if(icon_num == 2) st7789_draw_pic(138,30,64,64,(const uint8_t *)nokia_game2s_start);
+        else if(icon_num == 3) st7789_draw_pic(208,30,64,64,(const uint8_t *)nokia_game3s_start);
+        else if(icon_num == 4) st7789_draw_pic(68,105,64,64,(const uint8_t *)nokia_game4s_start);
+        else if(icon_num == 5) st7789_draw_pic(138,105,64,64,(const uint8_t *)nokia_game5s_start);
+        else if(icon_num == 6) st7789_draw_pic(208,105,64,64,(const uint8_t *)nokia_game6s_start);
     }
 }
 
@@ -185,54 +185,54 @@ void nokia_start(void)
     printf("Nokia Starting ... ...\r\n");
 	
     //播放开机动画
-    st7789_write_frame2(55,50,32*1,58,(const uint8_t *)nokia_pic00_start);
+    st7789_draw_pic(55,50,32*1,58,(const uint8_t *)nokia_pic00_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*2,93,(const uint8_t *)nokia_pic01_start);
+    st7789_draw_pic(55,50,32*2,93,(const uint8_t *)nokia_pic01_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*2,103,(const uint8_t *)nokia_pic02_start);
+    st7789_draw_pic(55,50,32*2,103,(const uint8_t *)nokia_pic02_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50+23,32*7,100,(const uint8_t *)nokia_pic03_start);
+    st7789_draw_pic(55,50+23,32*7,100,(const uint8_t *)nokia_pic03_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50+23,32*7,100,(const uint8_t *)nokia_pic04_start);
+    st7789_draw_pic(55,50+23,32*7,100,(const uint8_t *)nokia_pic04_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50+23,32*7,86,(const uint8_t *)nokia_pic05_start);
+    st7789_draw_pic(55,50+23,32*7,86,(const uint8_t *)nokia_pic05_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50+23,32*7,87,(const uint8_t *)nokia_pic06_start);
+    st7789_draw_pic(55,50+23,32*7,87,(const uint8_t *)nokia_pic06_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50+23,32*7,85,(const uint8_t *)nokia_pic07_start);
+    st7789_draw_pic(55,50+23,32*7,85,(const uint8_t *)nokia_pic07_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50+18,32*7,90,(const uint8_t *)nokia_pic08_start);
+    st7789_draw_pic(55,50+18,32*7,90,(const uint8_t *)nokia_pic08_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50+9,32*7,98,(const uint8_t *)nokia_pic09_start);
+    st7789_draw_pic(55,50+9,32*7,98,(const uint8_t *)nokia_pic09_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50+4,32*7,99,(const uint8_t *)nokia_pic10_start);
+    st7789_draw_pic(55,50+4,32*7,99,(const uint8_t *)nokia_pic10_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,105,(const uint8_t *)nokia_pic11_start);
+    st7789_draw_pic(55,50,32*7,105,(const uint8_t *)nokia_pic11_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,105,(const uint8_t *)nokia_pic12_start);
+    st7789_draw_pic(55,50,32*7,105,(const uint8_t *)nokia_pic12_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,105,(const uint8_t *)nokia_pic13_start);
+    st7789_draw_pic(55,50,32*7,105,(const uint8_t *)nokia_pic13_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,100,(const uint8_t *)nokia_pic14_start);
+    st7789_draw_pic(55,50,32*7,100,(const uint8_t *)nokia_pic14_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,100,(const uint8_t *)nokia_pic15_start);
+    st7789_draw_pic(55,50,32*7,100,(const uint8_t *)nokia_pic15_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,100,(const uint8_t *)nokia_pic16_start);
+    st7789_draw_pic(55,50,32*7,100,(const uint8_t *)nokia_pic16_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,118,(const uint8_t *)nokia_pic17_start);
+    st7789_draw_pic(55,50,32*7,118,(const uint8_t *)nokia_pic17_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,118,(const uint8_t *)nokia_pic18_start);
+    st7789_draw_pic(55,50,32*7,118,(const uint8_t *)nokia_pic18_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,118,(const uint8_t *)nokia_pic19_start);
+    st7789_draw_pic(55,50,32*7,118,(const uint8_t *)nokia_pic19_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,118,(const uint8_t *)nokia_pic20_start);
+    st7789_draw_pic(55,50,32*7,118,(const uint8_t *)nokia_pic20_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,118,(const uint8_t *)nokia_pic21_start);
+    st7789_draw_pic(55,50,32*7,118,(const uint8_t *)nokia_pic21_start);
     vTaskDelay(100);
-    st7789_write_frame2(55,50,32*7,118,(const uint8_t *)nokia_pic22_start);
+    st7789_draw_pic(55,50,32*7,118,(const uint8_t *)nokia_pic22_start);
     vTaskDelay(2000);
 
-    st7789_write_frame2(40,10,32*8,220,(const uint8_t *)nokia_desktop_start);
+    st7789_draw_pic(40,10,32*8,220,(const uint8_t *)nokia_desktop_start);
 
     ret = dac_output_disable(DAC_CHAN);
 
@@ -247,7 +247,7 @@ void nokia_start(void)
             if(page_index ==0)//桌面进入游戏界面
             {
                 page_index = 2;
-                st7789_write_frame2(40,10,32*8,220,(const uint8_t *)nokia_game_start);
+                st7789_draw_pic(40,10,32*8,220,(const uint8_t *)nokia_game_start);
 
                 game_icon_dis(1, game_num == 1?1:0);
                 game_icon_dis(2, game_num == 2?1:0);
@@ -259,7 +259,7 @@ void nokia_start(void)
             else //其他界面返回桌面
             {
                 page_index = 0;
-                st7789_write_frame2(40,10,32*8,220,(const uint8_t *)nokia_desktop_start);
+                st7789_draw_pic(40,10,32*8,220,(const uint8_t *)nokia_desktop_start);
             }
         }
 
@@ -269,12 +269,21 @@ void nokia_start(void)
             if(page_index ==0)//桌面进入讯息界面
             {
                 page_index = 1;
-                st7789_write_frame2(40,10,32*8,220,(const uint8_t *)nokia_msg_start);
+                st7789_draw_pic(40,10,32*8,220,(const uint8_t *)nokia_msg_start);
             }
             if(page_index ==2)//游戏界面确认选择游戏
             {
                 page_index = 0;
                 break;
+            }
+        }
+
+        if(gpio_get_level(26) == 0) //挂机键
+        {
+            if(page_index != 0)
+            {
+                page_index = 0;
+                st7789_draw_pic(40,10,32*8,220,(const uint8_t *)nokia_desktop_start);   
             }
         }
 
